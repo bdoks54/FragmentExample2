@@ -6,12 +6,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+//프래그먼트 추가를 위한 import
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 public class MainActivity extends AppCompatActivity implements FirstFragment.OnButtonClickedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //프래그먼트를 코드로 추가
+        if(savedInstanceState == null){
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            Fragment firstFragment = new FirstFragment();
+            fragmentTransaction.add(R.id.container, firstFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override
