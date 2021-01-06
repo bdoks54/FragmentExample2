@@ -50,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnB
 
     @Override
     public void onButtonClicked(){
-        Toast.makeText(this, "Hello Fragment!", Toast.LENGTH_SHORT).show();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        SecondFragment secondFragment = new SecondFragment();
+        fragmentTransaction.replace(R.id.container, SecondFragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
